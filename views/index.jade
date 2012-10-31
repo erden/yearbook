@@ -1,5 +1,14 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    h1= title
+    #articles
+        - each article in articles
+          div.article
+            div.created_at = article.created_at
+            div.title 
+                a(href="/blog/"+article._id)!= article.title
+            div.body
+                h2!= article.body
